@@ -1,0 +1,16 @@
+            capstone project -topic - fashionista 
+
+ *tools used*
+
+VS Code
+Angular
+NodeJS
+MongoDB 
+AWS cloud services for deploying the application
+
+1.i have made a website where you can buy fashion related things
+2.there are 2 models one for admin and second for users
+3.users can regiester thereself and buy things
+4.users can view all products and add cart and then they can buy items
+5.Admin have power to add items/delete items/view items and edit items
+

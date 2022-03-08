@@ -1,0 +1,40 @@
+<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #2b72a5;">
+  <div class="container">
+    <a routerLink="/" class="navbar-brand float-left" routerLinkActive="active">Admin Portal</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <ng-container *ngIf="!auth.isAuthenticated()">
+          <li class="nav-item">
+            <a routerLink="/auth/login" class="nav-link" routerLinkActive="active">
+              Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/auth/register" class="nav-link">
+              Register
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="auth.isAuthenticated()">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/companies-list']">Manage Companies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/products']">Manage Products</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link">
+              {{ auth.getUsername() }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pointer" (click)="logout()">
+              Logout
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>

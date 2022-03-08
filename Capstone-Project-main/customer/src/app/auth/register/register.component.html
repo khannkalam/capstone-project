@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div *ngIf="errors.length > 0" class="alert alert-danger">
+                <p *ngFor="let error of errors">
+                    {{ error }}
+                </p>
+            </div>
+            <div class="card">
+                <form class="box" #registerForm="ngForm">
+                    <h1>Registration</h1>
+                    <input type="text" [(ngModel)]="formData.username" #username="ngModel" required name="username" placeholder="Username">
+                    <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                        <div class="alert alert-danger" *ngIf="username.errors.required">
+                            Username is required
+                        </div>
+                    </div>
+                    <input type="text" [(ngModel)]="formData.firstname" #firstname="ngModel" required name="firstname" placeholder="Firstname">
+                    <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
+                        <div class="alert alert-danger" *ngIf="firstname.errors.required">
+                            Firstname is required
+                        </div>
+                    </div>
+
+                    <input type="text" [(ngModel)]="formData.lastname" name="lastname" #lastname="ngModel" required placeholder="Lastname">
+                    <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert-danger">
+                        <div class="alert alert-danger" *ngIf="lastname.errors.required">
+                            Lastname is required
+                        </div>
+                    </div>
+
+                    <input type="text" [(ngModel)]="formData.email" name="email" #email="ngModel" required placeholder="Email">
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                        <div *ngIf="email.errors.required">
+                            Email is required
+                        </div>
+                    </div>
+                    <input type="password" [(ngModel)]="formData.password" name="password" #password="ngModel" required placeholder="password">
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                        <div *ngIf="password.errors.required">
+                            Password is required
+                        </div>
+                    </div>
+                    <input type="password" [(ngModel)]="formData.passwordConfirmation" #passwordConfirmation="ngModel" name="passwordConfirmation" placeholder="Confirm Password" required>
+                    <div *ngIf="passwordConfirmation.invalid && (passwordConfirmation.dirty || passwordConfirmation.touched)" class="alert alert-danger">
+                        <div *ngIf="passwordConfirmation.errors.required">
+                            Confirm Password is required
+                        </div>
+                    </div>
+                    <input type="text" [(ngModel)]="formData.addressline1" #addressline1="ngModel" name="addressline1" placeholder="Address Line 1" required>
+                    <div *ngIf="addressline1.invalid && (addressline1.dirty || addressline1.touched)" class="alert alert-danger">
+                        <div class="alert alert-danger" *ngIf="addressline1.errors.required">
+                            Address Line 1 is required
+                        </div>
+                    </div>
+
+                    <input type="text" [(ngModel)]="formData.addressline2" #addressline2="ngModel" name="addressline2" placeholder="Address Line 2">
+
+                    <input type="text" [(ngModel)]="formData.city" #city="ngModel" name="city" placeholder="City" required>
+                    <div *ngIf="city.invalid && (city.dirty || city.touched)" class="alert alert-danger">
+                        <div class="alert alert-danger" *ngIf="city.errors.required">
+                            City is required
+                        </div>
+                    </div>
+
+                    <input type="text" [(ngModel)]="formData.state" #state="ngModel" name="state" placeholder="State" required>
+                    <div *ngIf="state.invalid && (state.dirty || state.touched)" class="alert alert-danger">
+                        <div class="alert alert-danger" *ngIf="state.errors.required">
+                            State is required
+                        </div>
+                    </div>
+
+                    <input type="text" [(ngModel)]="formData.zipcode" #zipcode="ngModel" name="zipcode" placeholder="Zipcode" required>
+                    <div *ngIf="zipcode.invalid && (zipcode.dirty || zipcode.touched)" class="alert alert-danger">
+                        <div class="alert alert-danger" *ngIf="zipcode.errors.required">
+                            Zipcode is required
+                        </div>
+                    </div>
+
+
+
+
+
+                    <input (click)="register()" type="submit" [disabled]="!registerForm.form.valid" value="Register">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

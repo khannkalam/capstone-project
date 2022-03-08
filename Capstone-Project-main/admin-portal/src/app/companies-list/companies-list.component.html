@@ -1,0 +1,58 @@
+<br/>
+<br/>
+<br/>
+
+<div class="container" *ngIf="ListCompanyDiv">
+  <div>
+    <button class="btn float-right" style="background-color: #046583; color: white;" (click)="addNewCompany()">Add New Company</button>
+  </div>
+    <div class="row">
+        <div class="col-12">
+          <table class="table table-bordered text-center" >
+            <thead style="background-color: #046583; color:white;">
+                <tr>
+                    <th>Company No.</th>
+                    <th>Company Name</th>
+                    <th>Actions</th> 
+
+                  </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let company of companies;let rowIndex=index">
+                    <td>{{rowIndex+1}}</td>
+                    <td>{{company.company}}</td>
+                    <td  class="text-center">
+                        <button type="button" class="btn btn-success" (click)="editCompany(rowIndex)"><i class="fas fa-edit"></i></button> &nbsp;
+                      <button type="button" class="btn btn-danger" (click)="deleteCompany(rowIndex)"><i class="far fa-trash-alt"></i></button>
+                    </td>
+            </tr>    
+             
+            </tbody>
+          </table>
+        </div>
+      </div>   
+</div>
+
+
+<div class="container-fluid" *ngIf="editCompanyDiv">
+  <h2 class="text-center">Update Company</h2>
+      <br/>
+      <br/>
+      <br/>
+  <div class="d-flex justify-content-center">
+      
+      <form class=""  [formGroup]="companyRef" (ngSubmit)="updateCompany(rowIndex)">
+          <div class="form-row">
+              <div class="col ">
+                <input type="text" formControlName="company" class="form-control" placeholder="Company Name">
+              </div>
+              <div class="col">
+                  <button type="submit" class="btn btn-info mb-2">Update Company</button>
+              </div>
+            </div>
+          
+         
+        </form>
+
+  </div>
+

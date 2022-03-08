@@ -1,0 +1,23 @@
+<br/> <br/>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4" *ngFor="let p of products; let rowIndex=index">
+            <div class="card text-white" height="400">
+                <img class="card-img" height="220" width="150" src="{{p.image}}" alt="Vans">
+                <div class="card-body">
+                    <h4 class="card-title">{{p.name}}</h4>
+                    <p class="card-text">
+                        {{p.description}} </p>
+
+                    <div class="buy d-flex justify-content-between align-items-center">
+                        <div class="price text-success">
+                            <h5 class="mt-4">{{p.price | currency:'USD'}}</h5>
+                        </div>
+                        <input type="button" (click)="addToCart(rowIndex,p._id)" width="20px" class="btn btn-danger mt-2 " value="Add to Cart">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

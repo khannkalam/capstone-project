@@ -1,0 +1,89 @@
+<br/>
+<br/>
+<br/>
+
+<div class="container" *ngIf="ListProductDiv">
+  <div>
+    <button class="btn float-right" style="background-color: #046583; color: white;" (click)="addNewProduct()">Add New Product</button>
+  </div>
+    <div class="row">
+        <div class="col-12">
+          <table class="table table-bordered text-center" >
+            <thead style="background-color: #046583; color:white;">
+                <tr>
+                    <th>Product No.</th>
+                    <th>Product Image</th>
+                    <th>Product Name</th>
+                    <th>Description</th> 
+                    <th>Company</th> 
+                    <th>Price</th> 
+                    <th>Actions</th> 
+
+                  </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of products;let rowIndex=index">
+                    <td>{{rowIndex+1}}</td>
+                    <td><img src="{{p.image}}" height="100" width="100"/></td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.description}}</td>
+                    <td>{{p.company['company']}}</td>
+                    <td>${{p.price}}</td>
+                    <td  class="text-center">
+                        <button type="button" class="btn btn-success" (click)="editProduct(rowIndex)"><i class="fas fa-edit"></i></button> &nbsp;
+                      <button type="button" class="btn btn-danger" (click)="deleteProduct(rowIndex)"><i class="far fa-trash-alt"></i></button>
+                    </td>
+            </tr>    
+             
+            </tbody>
+          </table>
+        </div>
+      </div>   
+</div>
+
+<div class="container-fluid" *ngIf="editProductDiv">
+
+    <form class="border border-light p-5" [formGroup]="productRef" (ngSubmit)="updateProduct(rowIndex)">
+
+        <p class="h4 mb-4 text-center">Update Product</p>
+    
+        <label for="textInput">Product Name</label>
+        <input type="text" formControlName="name" class="form-control mb-4" placeholder="Product Name">
+        <div *ngIf="productRef.hasError('required',['name'])" class="alert alert-danger">
+            Name is required.
+            </div>
+        <label for="textInput">Product Description</label>
+        <input type="text" formControlName="description"  class="form-control mb-4" placeholder="Text input">
+        <div *ngIf="productRef.hasError('required',['description'])" class="alert alert-danger">
+            Description is required.
+             </div>
+
+        <label for="textInput">Product Image</label>
+        <input type="text" formControlName="image"  class="form-control mb-4" placeholder="Text input">
+    
+        <div *ngIf="productRef.hasError('required',['image'])" class="alert alert-danger">
+            Image is required.
+            </div>
+
+        <label for="select">Company</label>
+        <select class="browser-default custom-select mb-4" formControlName="company" >
+            <option *ngFor="let c of companies" [value]="c._id" [attr.selected] = "c.company == selectedCompany" >{{c.company}}</option>
+
+        </select>
+        <div *ngIf="productRef.hasError('required',['company'])" class="alert alert-danger">
+            Company is required.
+            </div>
+    
+    
+        <label for="textInput">Product Price</label>
+        <input type="text" formControlName="price"  class="form-control mb-4" placeholder="Text input">
+        <div *ngIf="productRef.hasError('required',['price'])" class="alert alert-danger">
+            Price is required.
+            </div>
+        <button class="btn btn-info btn-block my-4" type="submit">Update Product</button>
+        <button class="btn btn-danger btn-block my-4" (click)="goBack()">Back</button>
+        
+    
+    </form>
+
+</div>

@@ -1,0 +1,55 @@
+<br/>
+<br/>
+<br/>
+
+<div class="container">
+    
+
+    <form class="border border-light p-5" [formGroup]="productRef" (ngSubmit)="addNewProduct()">
+
+        <p class="h4 mb-4 text-center">Add New Product</p>
+    
+        <label for="textInput">Product Name</label>
+        <input type="text" id="name" formControlName="name" class="form-control mb-4"  required  >
+        <div *ngIf="productRef.hasError('required',['name'])" class="alert alert-danger">
+        Name is required.
+        </div>
+        
+
+    
+        <label for="textInput">Product Description</label>
+        <input type="text" formControlName="description" required  class="form-control mb-4" placeholder="Text input">
+        <div *ngIf="productRef.hasError('required',['description'])" class="alert alert-danger">
+           Description is required.
+            </div>
+
+        <label for="textInput">Product Image</label>
+        <input type="text" formControlName="image" required  class="form-control mb-4" placeholder="Text input">
+        <div *ngIf="productRef.hasError('required',['image'])" class="alert alert-danger">
+            Image is required.
+            </div>
+    
+        <label for="select">Company</label>
+        <select class="browser-default custom-select mb-4" required formControlName="company" >
+            <option value="" disabled="" selected="">Choose your option</option>
+            <option *ngFor="let c of companies" [value]="c._id" >{{c.company}}</option>
+
+        </select>
+        <div *ngIf="productRef.hasError('required',['company'])" class="alert alert-danger">
+            Company is required.
+            </div>
+    
+        <label for="textInput">Product Price</label>
+        <input type="text" formControlName="price" required  class="form-control mb-4" placeholder="Text input">
+        <div *ngIf="productRef.hasError('required',['price'])" class="alert alert-danger">
+            Price is required.
+            </div>
+    
+        <button class="btn btn-info btn-block my-4" type="submit">Add Product</button>
+        <button class="btn btn-danger btn-block my-4" (click)="goBack()">Back</button>
+    
+    </form>
+
+    
+
+</div>

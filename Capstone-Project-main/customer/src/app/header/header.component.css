@@ -1,0 +1,11 @@
+.pointer {
+    cursor: pointer;
+}
+
+nav ul li a {
+    text-decoration: none
+}
+
+a {
+    color: white !important;
+}

@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div *ngIf="notify" class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ notify }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div *ngIf="errors.length > 0" class="alert alert-danger">
+                <p *ngFor="let error of errors">
+                    {{ error }}
+                </p>
+            </div>
+            <div class="card">
+                <form class="box" [formGroup]="loginForm" (ngSubmit)="login()">
+                    <h1>Login</h1>
+                    <p class="text-muted"> Please enter your login and password!</p>
+                    <input type="text" formControlName="email" name="" placeholder="Email">
+                    <div *ngIf="isValidInput('email')" class="alert alert-danger">
+                        <div *ngIf="loginForm.controls['email'].errors.required">
+                            Email is required.
+                        </div>
+                        <div *ngIf="loginForm.controls['email'].errors.pattern">
+                            Must be a valid email format.
+                        </div>
+                    </div>
+                    <input type="password" formControlName="password" name="" placeholder="Password">
+                    <div *ngIf="isValidInput('password')" class="alert alert-danger">
+                        <div *ngIf="loginForm.controls['password'].errors.required">
+                            Password is required.
+                        </div>
+                    </div>
+
+                    <input type="submit" [disabled]="!loginForm.valid" value="Login">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

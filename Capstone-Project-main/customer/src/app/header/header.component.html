@@ -1,0 +1,44 @@
+<nav class="navbar  navbar-expand-lg text-white " style="background-color:#01B8FD;">
+    <div class="container text-white">
+        <a routerLink="/" class="navbar-brand" routerLinkActive="active">Fashion Bazaar</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <ng-container *ngIf="!auth.isAuthenticated()">
+                    <li class="nav-item">
+                        <a routerLink="/auth/login" class="nav-link" routerLinkActive="active">
+              Login
+            </a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="/auth/register" class="nav-link">
+              Register
+            </a>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="auth.isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/viewproducts']">View Products</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/profile']">
+                        {{ auth.getFirstname() }}
+                         </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <a class="nav-link " [routerLink]="['/cart']">
+                        Cart
+                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pointer" (click)="logout()">
+              Logout
+            </a>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</nav>

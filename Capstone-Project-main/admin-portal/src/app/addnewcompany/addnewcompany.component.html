@@ -1,0 +1,39 @@
+<br/>
+<br/>
+<br/>
+
+
+
+<div class="container">
+    <h2 class="text-center">Add New Company</h2>
+        <br/>
+        <br/>
+        <br/>
+        <div class="alert alert-danger" *ngIf="error" role="alert">
+            Please enter valid name!
+          </div>
+
+    <div class="d-flex justify-content-center">
+       
+        
+        <form class=""  [formGroup]="companyRef" (ngSubmit)="addNewCompany()">
+            <div class="form-row">
+                <div class="col ">
+                  <input type="text" formControlName="company"  class="form-control" placeholder="Company Name" ngModel required>
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-info mb-2">Add Company</button>
+                    <button class="btn btn-danger btn-block my-4" (click)="goBack()">Go Back</button>
+                </div>
+              </div>
+            
+           
+          </form>
+
+
+    </div>
+
+   
+  
+   
+</div>
